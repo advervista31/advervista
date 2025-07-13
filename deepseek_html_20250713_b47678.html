@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advervistaप्रचार केंद्र</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #f39c12;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 90;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--primary-color);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .service-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .service-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+        
+        .contact-text {
+            flex: 1;
+        }
+        
+        .contact-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            section {
+                padding: 2rem 1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Advervistaप्रचार केंद्र</div>
+        <div class="tagline">Your One-Stop Solution for All Printing Needs</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#banners">3D Banners</a></li>
+            <li><a href="#cups">Cup Printing</a></li>
+            <li><a href="#business-cards">Business Cards</a></li>
+            <li><a href="#marriage-cards">Marriage Cards</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="banners">
+        <h2 class="section-title">3D Advertisement Banners</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1579536938190-2c9d58f37a1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">3D Flex Banners</h3>
+                    <p class="service-desc">High-quality 3D flex banners that make your advertisement stand out with vibrant colors and depth effects.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Hoardings</h3>
+                    <p class="service-desc">Large format hoardings with 3D effects that capture attention from a distance.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Glow Sign Boards</h3>
+                    <p class="service-desc">Illuminated 3D sign boards that make your business visible day and night.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="cups">
+        <h2 class="section-title">Cup Printing Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1590634875889-ef5a4f5b84e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Personalized Mugs</h3>
+                    <p class="service-desc">Custom printed mugs with your photos, logos, or messages in vibrant colors.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1517256064527-09c73fc73e38?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Promotional Cups</h3>
+                    <p class="service-desc">Branded cups for corporate gifting and promotional campaigns.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1575224300306-1b8da36134ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Thermos Flask Printing</h3>
+                    <p class="service-desc">Durable printing on thermos flasks that lasts through daily use.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="business-cards">
+        <h2 class="section-title">Business Card Printing</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1531492746076-161ca6c806a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Standard Business Cards</h3>
+                    <p class="service-desc">Premium quality business cards with glossy or matte finish options.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">3D Raised Business Cards</h3>
+                    <p class="service-desc">Luxury business cards with 3D raised effects for a premium feel.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1600267163477-2a5c04b0e89c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Metal Business Cards</h3>
+                    <p class="service-desc">Ultra-premium metal business cards that make a lasting impression.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="marriage-cards">
+        <h2 class="section-title">Marriage Card Printing</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Traditional Wedding Cards</h3>
+                    <p class="service-desc">Elegantly designed traditional wedding invitations with premium finishes.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Contemporary Wedding Cards</h3>
+                    <p class="service-desc">Modern wedding invitation designs with creative elements.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Luxury Wedding Cards</h3>
+                    <p class="service-desc">Premium wedding cards with embossing, foil stamping, and special finishes.</p>
+                    <a href="#contact" class="btn">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div class="contact-text">
+                    <h3>Phone</h3>
+                    <p>Call us at: <strong>8858317451</strong></p>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">💬</div>
+                <div class="contact-text">
+                    <h3>WhatsApp</h3>
+                    <p>Message us at: <strong>9415966678</strong></p>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-text">
+                    <h3>Address</h3>
+                    <p>Near Chitra Nursing Home</p>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">⏰</div>
+                <div class="contact-text">
+                    <h3>Working Hours</h3>
+                    <p>Monday to Saturday: 9:00 AM - 8:00 PM</p>
+                    <p>Sunday: 10:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 Advervistaप्रचार केंद्र. All Rights Reserved.</p>
+        <p>Your trusted partner for all printing and advertisement needs.</p>
+    </footer>
+    
+    <a href="https://wa.me/919415966678" class="whatsapp-float" target="_blank">💬</a>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 3D effect for service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                card.style.transform = `translateY(-10px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(-10px) rotateX(5deg)';
+            });
+        });
+    </script>
+</body>
+</html>
